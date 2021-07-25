@@ -5,10 +5,10 @@ import datetime
 title=input("Title: ")
 if title == "":
     title = 'Reminder'
-message=input('Throw a/c water and go to sleep')
+message=input('Note: ')
 if message == '':
     message = 'Alarm'
-at_time = input("Time (HH:MM:SS) (SS is optional): ")
+at_time = input("Time (HH:MM:SS) (SS is optional) (24 hours format): ")
 if at_time == '':
     at_time='22:49'
 
@@ -19,7 +19,12 @@ if weekly == '':
 else:
     weekly = int(weekly)
 
+(hour, minute) = at_time.split(":")
+hour=int(hour)
+minute=int(minute)
+
 while(True):
+
     if(time.strftime('%H:%M')==at_time):
         notification.notify(
             title=title,
@@ -30,5 +35,16 @@ while(True):
         )
         if weekly==0:
             exit(1)
+    
+    #Subtracts time from given time to find sleeping time
+    minute = minute-int(time.strftime('%M'))
+    hour = hour-int(time.strftime('%H'))
 
-    time.sleep(60)
+    #If minutes are negative add 60 to find real time for sleeping
+    if(minute<0):
+        minute = 60 - minute
+    if(hour<0):
+        hour = 24 - hour
+
+    time.sleep(minute*60)
+    time.sleep(hour*60*60)

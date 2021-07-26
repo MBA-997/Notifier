@@ -41,10 +41,11 @@ while(True):
     hour = hour-int(time.strftime('%H'))
 
     #If minutes are negative add 60 to find real time for sleeping
-    if(minute<0):
-        minute = 60 - minute
-    if(hour<0):
-        hour = 24 - hour
+    if minute<0:
+        minute = 60 + minute
+    if hour<0:
+        hour = 24 + hour
 
     time.sleep(minute*60)
-    time.sleep(hour*60*60)
+    if hour>1 or minute==0:
+        time.sleep(hour*60*60)

@@ -30,7 +30,7 @@ def notifier(_title, note, time_given):
             notification.notify(
                 title=title,
                 message=message,
-                app_icon='sleep_icon_154827.ico',
+                app_icon='./pictures/sleep_icon_154827.ico',
                 timeout=10,
                 toast=False
             )

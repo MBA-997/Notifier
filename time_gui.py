@@ -2,6 +2,7 @@ import tkinter as tk
 import time
 
 class Time(tk.Frame):
+    #Creates time wheel using spinbox
     def __init__(self, parent):
         super().__init__(parent)
         self.hourstr=tk.StringVar(self,time.strftime('%H'))
@@ -19,6 +20,7 @@ class Time(tk.Frame):
         self.min.grid(row=0,column=1)
         
 
+    #Traces time to check if value is out of bound and corrects accordingly
     def trace_time(self,*args):
         try:
             if self.last_value == "59" and self.minstr.get() == "0":
@@ -28,15 +30,18 @@ class Time(tk.Frame):
             print()
 
  
+    #Return current time selected by user
     def get_time(self):
-        self.trace_time()
+        self.trace_time()#Updates time if necessary
         hr=self.hourstr.get()
         min=self.minstr.get()
 
+        #Adds zeros for format
         if(len(hr)<2):
             hr='0'+hr
         if(len(min)<2):
             min='0'+min
         
+        #Concat of hour and minute
         full_time=(hr+':'+min)
         return full_time

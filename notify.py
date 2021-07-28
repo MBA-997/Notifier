@@ -2,6 +2,7 @@ from plyer import notification
 import time
 import datetime
 
+#Function for calling notification
 def notifier(_title, note, time_given):
     title = _title
     message = note
@@ -26,6 +27,7 @@ def notifier(_title, note, time_given):
 
     while(True):
 
+        #notication initializer
         if(time.strftime('%H:%M')==at_time):
             notification.notify(
                 title=title,

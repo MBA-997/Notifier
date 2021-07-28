@@ -6,12 +6,16 @@ import notify
 
 def notify_now():
     global tg, view, title_input, note_input
-
     notify.notifier(title_input.get(), note_input.get(), time_module.get_time())
+
+def on_enter(e):
+    reminder.config(background='#ee062e',foreground='white')
+def on_leave(e):
+    reminder.config(background='#cc062e',foreground='white')
 
 view = tkinter.Tk()#logic start
 view.title('Notify')#title bar title
-view.iconbitmap(r'D:/Stuff/FAST/Plans/Notifier/pictures/N.ico')#Title bar icon
+view.iconbitmap(r'./pictures/N.ico')#Title bar icon
 
 pyglet.font.add_file("./fonts/Chopsic-K6Dp.ttf")
 pyglet.font.add_file("./fonts/Oasis-BW0JV.ttf")
@@ -68,10 +72,12 @@ reminder = tkinter.Button( text='Set Reminder',
                          font=('chopsic',13),
                          fg='white',
                          relief='flat',
-                         activebackground = "#CCFF02"#86E3CE
+                         activebackground = "#CCFF02"
                          )
 note.create_window(200,180,window=reminder)
 reminder.pack(fill=tkinter.X, expand=tkinter.YES, side='bottom')
+reminder.bind('<Enter>', on_enter)
+reminder.bind('<Leave>', on_leave)
 
 image_label = tkinter.Label(view, image=bg_img)
 image_label.pack(fill=tkinter.BOTH, expand=tkinter.YES)

@@ -1,9 +1,8 @@
 # Notifier app
 
-This light weight notifier can be used for any reminder at any time. This notifier runs on command prompt, terminal, etc.
+This light weight notifier can be used for any reminder at any time. This notifier has a modern looking GUI made with tkinter library.
 
 In order to run:
-```python notify.py```
+```python launcher.py```
 
-You can also set it to repeat by turning on daily. There are many features to come; this is just the start.
-
+> The title and note input does not work right now
